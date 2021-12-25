@@ -1,10 +1,9 @@
 import { helperContext, registerUnbound } from "discourse-common/lib/helpers";
 import { htmlSafe } from "@ember/template";
 
-export default registerUnbound('skydive-calendar-jumpable-color', function(event, args) {
-    let siteSettings = helperContext().siteSettings;
+export default registerUnbound('skydive-calendar-jumpable-color', function(title) {
     var skydiveTitleRegex = /\[(.*?)\]/gm;
-    var skydiveTitleMatch = skydiveTitleRegex.exec(event.title);
+    var skydiveTitleMatch = skydiveTitleRegex.exec(title);
 
     if(skydiveTitleMatch){
         var skydiveTitleString =  skydiveTitleMatch.toString().replace('+', ' ');
