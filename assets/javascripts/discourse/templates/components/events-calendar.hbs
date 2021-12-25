@@ -21,12 +21,12 @@
         icon="rss"
         none='events_calendar.subscribe'
       )}}
-      {{#if showNotice}}
+      {{!--#if showNotice}}
         <ul class="events-webcal-notices">
           <li>{{html-safe (i18n 'webcal_preferences.calendar_notice' link="/my/preferences/webcal-keys")}}</li>
           <li>{{html-safe (i18n 'webcal_preferences.calendar_usage' doc="https://thepavilion.io/t/subscribing-to-events-ical-and-rss-feeds/2883")}}</li>
         </ul>
-      {{/if}}
+      {{/if --}}
   {{/if}}
 </div>
 {{events-calendar-body 

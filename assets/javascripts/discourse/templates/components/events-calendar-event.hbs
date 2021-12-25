@@ -1,4 +1,4 @@
-<div class="{{event.classes}}" {{action 'selectEvent' event.topic.url}} style="{{event.listStyle}}">
+<div class="{{event.classes}} skydive-event-color-{{skydive-calendar-jumpable-color event.title}}" {{action 'selectEvent' event.topic.url}} style="{{event.listStyle}}">
   {{#unless event.allDay}}
     <span style='{{event.dotStyle}}'>{{d-icon 'circle'}}</span>
   {{/unless}}
@@ -6,7 +6,7 @@
     <span class="time">{{event.time}}</span>
   {{/if}}
   {{#if event.title}}
-    <span class="title" style="{{event.titleStyle}}">{{replace-emoji event.title}}</span>
+    <span class="title" style="{{event.titleStyle}}">{{skydive-calendar-title event.title}}</span>
   {{/if}}
 </div>
 
