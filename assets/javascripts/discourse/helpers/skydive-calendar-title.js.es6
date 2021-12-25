@@ -6,7 +6,7 @@ export default registerUnbound('skydive-calendar-title', function(event, args) {
     var skydiveTitleRegex = /\[(.*?)\]/gm;
     var skydiveTitleMatch = skydiveTitleRegex.exec(event.title);
     if(skydiveTitleMatch && skydiveTitleMatch.length > 0){
-        return htmlSafe(skydiveTitleMatch);
+        return htmlSafe(skydiveTitleMatch[0]);
     }
     return htmlSafe(event.title);
 });
