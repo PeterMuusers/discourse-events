@@ -6,9 +6,8 @@ export default registerUnbound('skydive-calendar-jumpable-color', function(title
     var skydiveTitleMatch = skydiveTitleRegex.exec(title);
 
     if(skydiveTitleMatch){
-        var skydiveTitleString =  skydiveTitleMatch.toString().replace('+', ' ');
+        var skydiveTitleString =  skydiveTitleMatch.toString().toUpperCase().replace('+', ' ');
         var skydiveTitleWords = skydiveTitleString.split(" ");
-        skydiveTitleWords = skydiveTitleWords.toUpperCase();
 
         if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I') && skydiveTitleWords.includes('HI')){
             return 'green';
