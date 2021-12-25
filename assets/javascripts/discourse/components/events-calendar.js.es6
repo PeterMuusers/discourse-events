@@ -113,7 +113,7 @@ export default Component.extend({
 
   @discourseComputed('category')
   showSubscription(category) {
-    return true // !category || !category.read_restricted;
+    return false // !category || !category.read_restricted;
   },
 
   transitionToMonth(month, year) {
