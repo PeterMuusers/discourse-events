@@ -1,4 +1,4 @@
-{{#if events.length == 1}}
+{{#eq events.length 1}}
     {{#each events as |event|}}
         <div class="events-calendar-event-with-description">
             {{events-calendar-event event=event responsive=responsive}}
