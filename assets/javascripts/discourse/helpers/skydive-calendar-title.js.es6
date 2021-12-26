@@ -6,8 +6,8 @@ export default registerUnbound('skydive-calendar-title', function(title) {
     var skydiveTitleMatch = skydiveTitleRegex.exec(title);
     if(skydiveTitleMatch && skydiveTitleMatch.length > 0){
         var skydiveTitleString =  skydiveTitleMatch.toString();
-        skydiveTitleString = skydiveTitleMatch.replace('[', '');
-        skydiveTitleString = skydiveTitleMatch.replace(']', '');
+        skydiveTitleString = skydiveTitleString.replace('[', '');
+        skydiveTitleString = skydiveTitleString.replace(']', '');
         return htmlSafe(skydiveTitleString);
     }
     return htmlSafe(title);
