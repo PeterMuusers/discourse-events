@@ -1,0 +1,9 @@
+<div class="{{event.classes}} skydive-event-color-{{skydive-calendar-jumpable-color event.title}}" style="{{event.listStyle}}">
+    <div class="event-description">
+    {{ event.topic.body }}
+    </div>
+</div>
+
+{{#if showEventCard}}
+  {{events-calendar-card topic=event.topic selectEvent="selectEvent"}}
+{{/if}}

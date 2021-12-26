@@ -1,3 +1,14 @@
-{{#each events as |event|}}
-  {{events-calendar-event event=event responsive=responsive}}
-{{/each}}
+{{#if events.length == 1}}
+    {{#each events as |event|}}
+        <div class="events-calendar-event-with-description">
+            {{events-calendar-event event=event responsive=responsive}}
+            {{events-calendar-event-description event=event responsive=responsive}}
+        </div>
+    {{/each}}
+{{else}}
+    {{#each events as |event|}}
+        <div class="events-calendar-event-without-description">
+            {{events-calendar-event event=event responsive=responsive}}
+        </div>
+    {{/each}}
+{{/if}}
