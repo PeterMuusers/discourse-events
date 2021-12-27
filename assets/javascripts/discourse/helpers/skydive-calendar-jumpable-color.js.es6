@@ -7,8 +7,7 @@ export default registerUnbound('skydive-calendar-jumpable-color', function(title
 
     if(skydiveTitleMatch && skydiveTitleMatch.length > 0){
         var skydiveTitleString = skydiveTitleMatch[0].toUpperCase().replace('+', ' ');
-        skydiveTitleString = skydiveTitleString.replace('[', '');
-        skydiveTitleString = skydiveTitleString.replace(']', '');
+        skydiveTitleString = skydiveTitleString.substr(1, skydiveTitleString.length - 2);
         var skydiveTitleWords = skydiveTitleString.split(" ");
 
         if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I') && skydiveTitleWords.includes('HI')){
@@ -20,7 +19,12 @@ export default registerUnbound('skydive-calendar-jumpable-color', function(title
         if(skydiveTitleWords.includes('P')){
             return 'orange';
         }
-        return 'red';
+        if(skydiveTitleWords.includes('ANIMO') || skydiveTitleWords.includes('ANIMOCHECK')){
+            return 'purple';
+        }
+        if(skydiveTitleWords.includes('CANCEL') || skydiveTitleWords.includes('GESLOTEN') || skydiveTitleWords.includes('CLOSED') || skydiveTitleWords.includes('XX')){
+            return 'red';
+        }
     }
     return 'neutral';
 });
