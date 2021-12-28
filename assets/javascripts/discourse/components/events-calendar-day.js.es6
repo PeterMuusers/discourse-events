@@ -112,6 +112,7 @@ export default Component.extend({
 
     const allEvents = this.get('allEvents');
     var dayClass = '';
+    var dayClassLevel = 0;
     allEvents.forEach(event => function(){
       var skydiveTitleRegex = /\[(.*?)\]/gm;
       var skydiveTitleMatch = skydiveTitleRegex.exec(title);
@@ -120,24 +121,46 @@ export default Component.extend({
         var skydiveTitleString = skydiveTitleMatch[0].toUpperCase().replace('+', ' ');
         skydiveTitleString = skydiveTitleString.substr(1, skydiveTitleString.length - 2);
         var skydiveTitleWords = skydiveTitleString.split(" ");
+        console.log('init dayclass level now');
 
         if(skydiveTitleWords.includes('ANIMO') || skydiveTitleWords.includes('ANIMOCHECK')){
-          dayClass =  'day-purple ';
+          dayClassLevel = Math.max(dayClassLevel, 2);
+          console.log('init dayclass level 2');
         }
         if(skydiveTitleWords.includes('P')){
-          dayClass = 'day-orange ';
+          dayClassLevel = Math.max(dayClassLevel, 3);
+          console.log('init dayclass level 3');
         }
         if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I')){
-          dayClass = 'day-blue ';
+          dayClassLevel = Math.max(dayClassLevel, 4);
+          console.log('init dayclass level 4');
         }
         if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I') && skydiveTitleWords.includes('HI')){
-          dayClass = 'day-green ';
+          dayClassLevel = Math.max(dayClassLevel, 5);
+          console.log('init dayclass level 5');
         }
         if(skydiveTitleWords.includes('CANCEL') || skydiveTitleWords.includes('GESLOTEN') || skydiveTitleWords.includes('CLOSED') || skydiveTitleWords.includes('XX')){
+          dayClassLevel = Math.max(dayClassLevel, 1);
+          console.log('init dayclass level 1');
           dayClass += 'day-red ';
         }
       }
     });
+    if(dayClassLevel == 1){
+      dayClass += 'day-red ';
+    }
+    if(dayClassLevel == 2){
+      dayClass += 'day-purple ';
+    }
+    if(dayClassLevel == 3){
+      dayClass += 'day-orange ';
+    }
+    if(dayClassLevel == 4){
+      dayClass += 'day-blue ';
+    }
+    if(dayClassLevel == 5){
+      dayClass += 'day-green ';
+    }
     classes += dayClass
     console.log('set dayclass');
     console.log(classes);
