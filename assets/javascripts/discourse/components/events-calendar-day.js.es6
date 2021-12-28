@@ -109,6 +109,10 @@ export default Component.extend({
     if (expanded) {
       classes += 'expanded';
     }
+
+    const allEvents = this.get('allEvents');
+    allEvents.forEach(event => console.log(event.title));
+
     return classes;
   },
 
