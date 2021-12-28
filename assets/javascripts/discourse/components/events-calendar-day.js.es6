@@ -110,7 +110,7 @@ export default Component.extend({
       classes += 'expanded';
     }
 
-    const allEvents = this.allevents(day, topics, expanded, rowIndex);
+    const allEvents = this.allEvents(day, topics, expanded, rowIndex);
     var dayClass = '';
     var dayClassLevel = 0;
     allEvents.forEach(event => function(){
