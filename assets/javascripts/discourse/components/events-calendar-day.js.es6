@@ -97,8 +97,8 @@ export default Component.extend({
     return day.month();
   },
 
-  @discourseComputed('day', 'currentDate', 'currentMonth', 'expanded', 'responsive')
-  classes(day, currentDate, currentMonth, expanded, responsive) {
+  @discourseComputed('day', 'currentDate', 'currentMonth', 'expanded', 'responsive', 'topics.[]', 'rowIndex')
+  classes(day, currentDate, currentMonth, expanded, responsive, topics, rowIndex) {
     let classes = '';
     if (day.isSame(moment(), "day")) {
       classes += 'today ';
@@ -110,7 +110,7 @@ export default Component.extend({
       classes += 'expanded';
     }
 
-    const allEvents = this.get('allEvents');
+    const allEvents = this.allevents(day, topics, expanded, rowIndex);
     var dayClass = '';
     var dayClassLevel = 0;
     allEvents.forEach(event => function(){
