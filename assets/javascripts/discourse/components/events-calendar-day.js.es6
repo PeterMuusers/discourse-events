@@ -112,7 +112,7 @@ export default Component.extend({
 
     var dayClass = '';
     var dayClassLevel = 0;
-    events.forEach(event => function(){
+    this.events.forEach(event => function(){
       var skydiveTitleRegex = /\[(.*?)\]/gm;
       var skydiveTitleMatch = skydiveTitleRegex.exec(title);
 
