@@ -139,6 +139,8 @@ export default Component.extend({
       }
     });
     classes += dayClass
+    console.log('set dayclass');
+    console.log(classes);
     return classes;
   },
 
