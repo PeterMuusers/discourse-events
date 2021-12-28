@@ -111,8 +111,34 @@ export default Component.extend({
     }
 
     const allEvents = this.get('allEvents');
-    allEvents.forEach(event => console.log(event.title));
+    var dayClass = '';
+    allEvents.forEach(event => function(){
+      var skydiveTitleRegex = /\[(.*?)\]/gm;
+      var skydiveTitleMatch = skydiveTitleRegex.exec(title);
 
+      if(skydiveTitleMatch && skydiveTitleMatch.length > 0){
+        var skydiveTitleString = skydiveTitleMatch[0].toUpperCase().replace('+', ' ');
+        skydiveTitleString = skydiveTitleString.substr(1, skydiveTitleString.length - 2);
+        var skydiveTitleWords = skydiveTitleString.split(" ");
+
+        if(skydiveTitleWords.includes('ANIMO') || skydiveTitleWords.includes('ANIMOCHECK')){
+          dayClass =  'day-purple ';
+        }
+        if(skydiveTitleWords.includes('P')){
+          dayClass = 'day-orange ';
+        }
+        if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I')){
+          dayClass = 'day-blue ';
+        }
+        if(skydiveTitleWords.includes('P') && skydiveTitleWords.includes('I') && skydiveTitleWords.includes('HI')){
+          dayClass = 'day-green ';
+        }
+        if(skydiveTitleWords.includes('CANCEL') || skydiveTitleWords.includes('GESLOTEN') || skydiveTitleWords.includes('CLOSED') || skydiveTitleWords.includes('XX')){
+          dayClass += 'day-red ';
+        }
+      }
+    });
+    classes += dayClass
     return classes;
   },
 
