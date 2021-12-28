@@ -99,6 +99,9 @@ export default Component.extend({
 
   @discourseComputed('day', 'currentDate', 'currentMonth', 'expanded', 'responsive')
   classes(day, currentDate, currentMonth, expanded, responsive) {
+    const allEvents = this.get('allEvents');
+    let events = $.extend([], allEvents);
+    
     let classes = '';
     if (day.isSame(moment(), "day")) {
       classes += 'today ';
@@ -112,7 +115,7 @@ export default Component.extend({
 
     var dayClass = '';
     var dayClassLevel = 0;
-    this.events.forEach(event => function(){
+    events.forEach(event => function(){
       var skydiveTitleRegex = /\[(.*?)\]/gm;
       var skydiveTitleMatch = skydiveTitleRegex.exec(title);
 
